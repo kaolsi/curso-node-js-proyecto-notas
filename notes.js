@@ -23,7 +23,19 @@ const removeNote = (id) => {
   return 'Nota borrada'
 }
 
+const listNote = () => {
+  console.log(`Lista de notas`)
+  return 'Lista de notas'
+}
+
+const readNote = () => {
+  console.log(`Leer nota`)
+  return 'Leer nota'
+}
+
 module.exports = {
   addNote,
-  removeNote
+  removeNote,
+  listNote,
+  readNote
 }
