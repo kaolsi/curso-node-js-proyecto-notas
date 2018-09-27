@@ -14,17 +14,17 @@ const param = argv._[0]
 
 switch (param) {
   case 'add':
-    notas.addNote()
+    notas.addNote(argv.title, argv.body)
     console.log(`Añadiendo nueva nota con título ${argv.title}`)
     break
   case 'list':
     notas.listNote()
     break
   case 'read':
-    notas.readNote()
+    notas.readNote(argv.title)
     break
   case 'remove':
-    notas.removeNote()
+    notas.removeNote(argv.title)
     break
   default:
     console.log('Comando no reconocido')
