@@ -1,8 +1,35 @@
 console.log('Módulo de notas cargado')
+// const fs = require('fs')
 
-const addNote = (titulo, cuerpo) => {
-  console.log('Añadida nota:', titulo, cuerpo)
-  return 'Nueva nota'
+// const utils = require('./utils.js')
+// const { saveNotes, fetchNotes } = utils
+
+const { saveNotes, fetchNotes } = require('./utils.js')
+
+const addNote = (title, body) => {
+  const notes = fetchNotes()
+  const note = {
+    title,
+    body
+  }
+
+  //                                  DUPLICADOS
+  /*
+  let duplicado = false
+  for(let i = 0; i<notes.lenght;i++){
+    if(noter[i].title === title) duplicado =true
+  }
+  if(!duplicado) notes.push(note)
+  */
+
+  const duplicados = notes.filter((note) => note.title === title)
+  if (duplicados.length === 0) {
+    notes.push(note)
+    saveNotes(notes)
+    console.log(`Guardado correctamente con título `)
+  } else {
+    console.log(`Nota no guardada porque ya existe`)
+  }
 }
 
 //          -----ALTERNATIVAS-----
