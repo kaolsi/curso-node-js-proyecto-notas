@@ -26,13 +26,11 @@ const addNote = (title, body) => {
   if (duplicados.length === 0) {
     notes.push(note)
     saveNotes(notes)
-    console.log(`Guardado correctamente con título `)
-  } else {
-    console.log(`Nota no guardada porque ya existe`)
+    return note
   }
 }
 
-//          -----ALTERNATIVAS-----
+//          -----ALTERNATIVAS DE FUNCIONES-----
 /* const addNote = function () {
   console.log(`Nueva nota`)
   return 'Nueva nota'
@@ -45,19 +43,29 @@ const addNote = (title, body) => {
 } */
 
 const removeNote = (titulo) => {
-  console.log(`${titulo} borrada`)
-  // console.log('Nota con' + id + 'borrada')
-  return 'Nota borrada'
+  const notes = fetchNotes()
+
+  // Filter: devuelve todas las coincidencias
+  const notasFiltradas = notes.filter(
+    (note) => note.title !== titulo
+  )
+  saveNotes(notasFiltradas)
+  return (notasFiltradas.length === notes.length)
 }
 
 const listNote = () => {
-  console.log(`Lista de notas `)
-  return 'Lista de notas'
+  const notes = fetchNotes()
+  return notes
 }
 
 const readNote = (titulo) => {
-  console.log(`Leer nota`, titulo)
-  return 'Leer nota'
+  const notes = fetchNotes()
+
+  // Some: devuelve la primera coincidencia
+  const miNota = notes.find(
+    (note) => note.title === titulo
+  )
+  return miNota
 }
 
 module.exports = {

@@ -18,7 +18,13 @@ const saveNotes = (notes) => {
   fs.writeFileSync('notes-data.json', JSON.stringify(notes))
 }
 
+const logNote = (note) => {
+  console.log(`\tTítulo: ${note.title}`)
+  console.log(`\tTexto: ${note.body}`)
+}
+
 module.exports = {
   fetchNotes,
-  saveNotes
+  saveNotes,
+  logNote
 }
